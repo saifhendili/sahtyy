@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vaccin index{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Vaccin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Quantity</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vaccin in vaccins %}
+            <tr>
+                <td>{{ vaccin.description }}</td>
+                <td>{{ vaccin.prix }}</td>
+                <td>{{ vaccin.quantity }}</td>
+                <td>
+                    <a href="{{ path('vaccin_show', {'id': vaccin.id}) }}">show</a>
+                    <a href="{{ path('vaccin_edit', {'id': vaccin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vaccin_new') }}">Create new</a>
+{% endblock %}

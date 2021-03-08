@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medicaments index{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Medicaments index</h1>
+    {% if app.user %}
+    <a href="{{ path('medicaments_new') }}">Create new</a>
+    {% endif %}
+    <section class="myPublication">
+
+
+
+
+    {% for medicament in medicaments %}
+        <div class="card mycardpublication" style="width: 18rem;">
+            <img class="card-img-top" src="{{ medicament.img }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ medicament.nom }}</h5>
+                <p class="card-text">{{ medicament.prix }}dt</p>
+
+               <a href="{{ path('reservation_med_new', {'id': medicament.id}) }}" class="btn btn-primary">Reserver</a>
+                <a href="{{ path('reservation_med_new', {'id': medicament.id}) }}"class="btn btn-primary">show</a>
+                  
+                {% if medicament.getIdPharmacie() == app.user.id  %}
+                    <a href="{{ path('publication_edit', {'id': publication.id}) }}" class="btn btn-primary">edit</a>
+                    {{ include('publication/_delete_form.html.twig') }}
+                {% endif %}
+            </div>
+        </div>
+
+
+
+
+
+        <a href="{{ path('medicaments_edit', {'id': medicament.id}) }}">edit</a>
+
+    {% endfor %}
+    </section>
+
+
+
+
+
+
+
+
+{% endblock %}

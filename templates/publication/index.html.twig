@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publication index{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Publication index</h1>
+    <a href="{{ path('publication_new') }}">Create new</a>
+<section class="myPublication">
+
+{% for publication in publications %}
+<div class="card mycardpublication" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ publication.nomUser }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ publication.PrenomUser }}</h6>
+        <p class="card-text">{{ publication.publicationText }}</p>
+        <a href="{{ path('publication_show', {'id': publication.id}) }}" class="card-link">Show</a>
+        {% if publication.getIdUser() == app.user.id  %}
+            <a href="{{ path('publication_edit', {'id': publication.id}) }}" class="card-link">edit</a>
+
+            {{ include('publication/_delete_form.html.twig') }}
+        {% endif %}
+
+    </div>
+</div>
+
+
+
+        {% endfor %}
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit FormAide{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Edit Form d'Aide</h1>
+
+    {{ include('form_aide/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('form_aide_index') }}">back to list</a>
+
+    {{ include('form_aide/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Vaccin{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+<div class="stmeformlpub">
+    <h1>Create new Vaccin</h1>
+
+    {{ include('vaccin/_form.html.twig') }}
+
+    <a href="{{ path('vaccin_index') }}">back to list</a>
+    </div>
+{% endblock %}

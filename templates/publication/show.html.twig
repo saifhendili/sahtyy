@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Publication</h1>
+
+    <table class="table">
+        <tbody>
+           
+            <tr>
+                <th>Publication_text</th>
+                <td>{{ publication.publicationText }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('publication_index') }}">back to list</a>
+
+
+    {% if publication.getIdUser() == app.user.id  %}
+        <a href="{{ path('publication_edit', {'id': publication.id}) }}">edit</a>
+        {{ include('publication/_delete_form.html.twig') }}
+    {% endif %}
+
+{% endblock %}
