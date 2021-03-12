@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reservaide{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Edit Reservaide</h1>
+
+    {{ include('form_aide/_formreservalid.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('reservaide_index') }}">back to list</a>
+
+    {{ include('form_aide/_delete_formreservalid.html.twig') }}
+{% endblock %}

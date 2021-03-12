@@ -2,31 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Publication;
+use App\Entity\PostLike;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Publication|null find($id, $lockMode = null, $lockVersion = null)
- * @method Publication|null findOneBy(array $criteria, array $orderBy = null)
- * @method Publication[]    findAll()
- * @method Publication[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method PostLike|null find($id, $lockMode = null, $lockVersion = null)
+ * @method PostLike|null findOneBy(array $criteria, array $orderBy = null)
+ * @method PostLike[]    findAll()
+ * @method PostLike[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PublicationRepository extends ServiceEntityRepository
+class PostLikeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Publication::class);
+        parent::__construct($registry, PostLike::class);
     }
 
-
-   
-
-
-    
-
     // /**
-    //  * @return Publication[] Returns an array of Publication objects
+    //  * @return PostLike[] Returns an array of PostLike objects
     //  */
     /*
     public function findByExampleField($value)
@@ -43,7 +37,7 @@ class PublicationRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Publication
+    public function findOneBySomeField($value): ?PostLike
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

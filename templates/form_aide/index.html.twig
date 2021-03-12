@@ -4,37 +4,50 @@
 
 {% block section %}
 <section class="mypage"></section>
+    <div class="head-mybody">
     <h1>Form d'aide</h1>
 {% if app.user%}
 
-<a href="{{ path('form_aide_new') }}">Create new</a>
+<a class="btn btn-primary"href="{{ path('form_aide_new') }}"><i class="fas fa-plus"></i> Ajouter </a>
 {% endif %}
-<section class="myPublication">
-
-
+</div>
+    
+<section class="container">
+<div class="row">
+<div class="col-md-3">
+{% include 'form_aide/_filter.html.twig' with {form:form} only %}
+</div>
+<div class="col-md-9">
+<div class="grid">
    {% for form_aide in form_aides %}
-        <div class="card mycardpublication" style="width: 18rem;">
+   {% if form_aide.quantit > 0 %}
+        <div class="card mycardpublication" style="width:18rem;">
             <img class="card-img-top" src="{{ form_aide.img }}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">{{ form_aide.nom }}</h5>
-                <p class="card-text">{{ form_aide.textpub }}dt</p>
+                {# <h5 class="card-title">{{ form_aide.nom }}</h5> #}
+                <p class="card-text">Description{{ form_aide.textpub }}</p>
+                <p class="card-text" style="font-weight:bold;font-size:1,5rem">Quantité :{{ form_aide.quantit }}</p>
 
-                <a href="{{ path('form_aide_show', {'id': form_aide.id}) }}"class="btn btn-primary">show</a>
+                {# <a href="{{ path('form_aide_show', {'id': form_aide.id}) }}"class="btn btn-primary">show</a> #}
+               
+
+    {# <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a> #}
+  
                   
                 {% if form_aide.getIdUser() == app.user.id  %}
                     <a href="{{ path('form_aide_edit', {'id': form_aide.id}) }}" class="btn btn-primary">edit</a>
                     {{ include('form_aide/_delete_form.html.twig') }}
+                    {% else %}
+                     <a href="{{ path('reservaide_new', {'id': form_aide.id}) }}"class="btn btn-primary">reserver</a>
                 {% endif %}
-            </div>
+                </div>
         </div>
-
-
-
-
-
-     
-
+ {% endif %}
     {% endfor %}
+    <div>
+</div>
+</div>
     </section>
 
 

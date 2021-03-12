@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use App\entity\User;
 use App\Repository\PublicationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -50,9 +50,15 @@ class Publication
      */
     private $PrenomUser;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PostLike::class, mappedBy="post")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,5 +154,45 @@ class Publication
         $this->PrenomUser = $PrenomUser;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|PostLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(PostLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(PostLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getPost() === $this) {
+                $like->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+    /**
+     * @param User $user
+     * @return boolean
+     */
+    public function isLikedByUser(User $user) :bool{
+foreach($this->likes as $like){
+    if($like->getUser()===$user) return true;
+}
+return false;
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\FormAide;
 use App\Form\FormAideType;
+use App\Form\SearchForm;
 use App\Repository\FormAideRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +20,16 @@ class FormAideController extends AbstractController
     /**
      * @Route("/", name="form_aide_index", methods={"GET"})
      */
-    public function index(FormAideRepository $formAideRepository): Response
+    public function index(FormAideRepository $formAideRepository, Request $request): Response
     {
+        $data=new SearchData();
+        $form=$this->createForm(SearchForm::class, $data);
+        $form->handleRequest($request); 
+
+        $products=$formAideRepository->findSearch($data);
         return $this->render('form_aide/index.html.twig', [
-            'form_aides' => $formAideRepository->findAll(),
+            'form_aides' => $products,
+            'form'=>$form->createView()
         ]);
     }
 

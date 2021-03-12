@@ -4,11 +4,14 @@
 
 {% block section %}
 <section class="mypage"></section>
-    <h1>Edit Form d'Aide</h1>
+  <div class="head-mybody">
+   <a href="{{ path('form_aide_index') }}"><i class="fas fa-arrow-left"></i> Retour</a>
+    <h1>Changer </h1>
 
     {{ include('form_aide/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('form_aide_index') }}">back to list</a>
+   
 
-    {{ include('form_aide/_delete_form.html.twig') }}
+    {# {{ include('form_aide/_delete_form.html.twig') }} #}
+    </div>
 {% endblock %}

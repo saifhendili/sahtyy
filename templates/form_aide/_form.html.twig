@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form, {'attr' :{ 'class': 'form-control' } }) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+     {# {{ form_widget(form) }} #}
+     {# {{ form_label(form.img,"Image")  }}  #}
+     {{ form_row(form.img,{'attr':{'class':'form-control space' ,'placeholder':'Image'},'label':'Image de la produit'}) }}
+     
+       {{ form_row(form.textpub,{'attr':{'class':'form-control space' ,'placeholder':'Publication'},'label':'Description'}) }} 
+       {{ form_row(form.quantit,{'attr':{'class':'form-control space' ,'value':'1'},'label':'Quantité'}) }} 
+       {{ form_row(form.categories,{'attr':{'class':'form-control space' ,'value':'1'},'label':'Quantité'}) }} 
+
+    <center><button class="btn btn-primary space">{{ button_label|default('Enregistrer') }}</button></center>
 {{ form_end(form) }}

@@ -18,7 +18,10 @@
 
         {% block javascripts %}
 <script src="{{asset('js/modernizr.js')}}"></script>
+<script src="https://kit.fontawesome.com/147d0b6970.js" crossorigin="anonymous"></script>
         {% endblock %}
+
+		
     </head>
     <body>
         {% block header %}
@@ -52,18 +55,50 @@
 
 
 							{% if app.user %}
-                            <ul class="nav navbar-nav navbar-right">
-							
-					        <li><a class="menu active" href="" >home</a></li>
-							  <li><a class="menu" href="{{path('form_aide_index')}}">Form d'aide</a></li>
-                            <li><a class="menu" href="{{path('publication_index')}}">Forum de Publication</a></li>
-					        <li><a class="menu" href="{{path('medicaments_index')}}">Reserver Medicament</a></li>
-                            <li><a class="menu" href="{{path('vaccin_index')}}">Reserver Vaccin</a></li>
-					        <li><a class="menu" href=""> rendez-vous</a></li>
-						<li>
-							<a href="{{path('app_logout')}}">logout</a>
-						</li>
-</ul>
+								{% if app.user.type == "medecin" %}
+									<ul class="nav navbar-nav navbar-right">
+
+										<li><a class="menu active" href="" >home</a></li>
+										<li><a class="menu" href="">Confirme compte</a></li>
+										<li><a class="menu" href="{{path('form_aide_index')}}">Form d'aide</a></li>
+										<li><a class="menu" href="{{path('publication_index')}}">Forum de Publication</a></li>
+										<li><a class="menu" href="{{path('medicaments_index')}}">Reserver Medicament</a></li>
+										<li><a class="menu" href="{{path('vaccin_index')}}">Reserver Vaccin</a></li>
+										<li><a class="menu" href=""> rendez-vous</a></li>
+										<li>
+											<a href="{{path('app_logout')}}">logout</a>
+										</li>
+									</ul>
+								{% else  %}
+									{% if app.user.type == "pharmacie" %}
+										<ul class="nav navbar-nav navbar-right">
+
+											<li><a class="menu active" href="" >home</a></li>
+											<li><a class="menu" href="">Confirme compte</a></li>
+											<li><a class="menu" href="{{path('form_aide_index')}}">Ajouter medecament</a></li>
+											<li><a class="menu" href="{{path('publication_index')}}">Ajouter vaccin</a></li>
+
+											<li>
+												<a href="{{path('app_logout')}}">logout</a>
+											</li>
+										</ul>
+									{% endif %}
+									{% if app.user.type == "patient" %}
+									<ul class="nav navbar-nav navbar-right">
+
+										<li><a class="menu active" href="" >home</a></li>
+										<li><a class="menu" href="{{path('form_aide_index')}}">Aide</a></li>
+										<li><a class="menu" href="{{path('publication_index')}}">Publication</a></li>
+										<li><a class="menu" href="{{path('medicaments_index')}}">Reserver Medicament</a></li>
+										<li><a class="menu" href="{{path('vaccin_index')}}">Reserver Vaccin</a></li>
+										<li><a class="menu" href=""> rendez-vous</a></li>
+										<li>
+											<a href="{{path('app_logout')}}">logout</a>
+										</li>
+									</ul>
+								{% endif %}
+								{% endif %}
+
 					{% else %}
                      <ul class="nav navbar-nav navbar-right">
 						<li>
@@ -242,11 +277,11 @@
 		</div>
 	</footer>
     {% endblock %}
-    {% block js2 %}
-    <script src="{{ asset('js/jquery-2.1.1.js')}}"></script>
-	<script src="{{ asset('js/smoothscroll.js')}}"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/custom.js') }}"></script>
+	{% block js3 %}
     {% endblock %}
+    {% block js2 %}
+
+    {% endblock %}
+	
     </body>
 </html>

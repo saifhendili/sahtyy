@@ -9,6 +9,29 @@
 *
 *
 ****/
+
+
+.space{
+    margin: 10px 0   ;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+.head-mybody{
+    margin: 5% 13%;
+}
+.fixed_btn_dele{
+    position: absolute;
+    margin-top: -3.9%;
+    margin-left: 14%;
+}
+.btn-delete-my{
+    position: absolute;
+    margin-left: 73%;
+    margin-top: -6%;
+}
 .myPublication{
     display: flex;
     flex-direction: row;
@@ -20,9 +43,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: lightgrey;
-    padding: 0 10px;
-    margin: 15px 20px;
+    border:1px #ECECEC solid;
+    /* padding: 10px 30px; */
+    margin: 15px 10px;
     border-radius: 4px;
 
 
@@ -942,4 +965,9 @@ responsive area
 
 .butsp{
     margin-top: 25%;
+}
+.filter{
+    display: block;
+    position:sticky;
+    top:20px;
 }

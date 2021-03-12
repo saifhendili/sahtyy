@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\User;
+use App\Entity\PostLike;
 use App\Entity\Publication;
 use App\Form\Publication2Type;
 use App\Repository\PublicationRepository;
+use App\Repository\PostLikeRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 
 /**
  * @Route("/publication")
@@ -20,6 +25,7 @@ class PublicationController extends AbstractController
      */
     public function index(PublicationRepository $publicationRepository  ): Response
     {
+        
         return $this->render('publication/index.html.twig', [
             'publications' => $publicationRepository->findAll(),
         ]);
@@ -87,12 +93,21 @@ class PublicationController extends AbstractController
     /**
      * @Route("/{id}", name="publication_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Publication $publication): Response
+    public function delete(Request $request, Publication $publication,PostLikeRepository $likeRepo): Response
     {
-        
+
+      
         if ($this->isCsrfTokenValid('delete'.$publication->getId(), $request->request->get('_token'))) {
-            
-            $entityManager = $this->getDoctrine()->getManager();
+            $mylikes=$likeRepo->findBy([
+                'post'=>$publication,
+                ]);
+                $entityManager = $this->getDoctrine()->getManager();
+                foreach ($mylikes as $likeee) {
+                    $entityManager->remove($likeee);  
+                   
+                }
+                $entityManager->flush(); 
+                $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($publication);
             $entityManager->flush();
         }
@@ -101,4 +116,43 @@ class PublicationController extends AbstractController
         return $this->redirectToRoute('publication_index');
     }
     
+    /**
+     * @Route("/{id}/like",name="publication_like")
+     * 
+     * @param PostLikeRepository $likeRepo
+     * @param Publication $publication
+     * @param \Symfony\Component\HttpFoundation\Response
+     */
+    public function like(Publication $publication, PostLikeRepository $likeRepo):
+    Response{
+        $user=$this->getUser();
+if(!$user)return $this->json([
+    'code'=>403,
+    'message'=>"Unauthorized"
+],403);
+if($publication->isLikedByUser($user)){
+    $like=$likeRepo->findOneBy([
+        'post'=>$publication,
+        'user'=>$user
+    ]);
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->remove($like);
+    $entityManager->flush();
+    return $this->json([
+        'code'=>200,
+        'message'=> 'like bien supprimé',
+        'likes'=>$likeRepo->count(['post'=>$publication])
+    ],200);
+}
+$like =new PostLike();
+$like->setPost($publication)
+     ->setUser($user);
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->persist($like);
+    $entityManager->flush();
+
+return $this->json(['code'=>200,
+'message'=>'like bien ajouté',
+'likes'=>$likeRepo->count(['post'=>$publication])],200);
+    }
 }

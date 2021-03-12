@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\FormAide;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,6 +19,32 @@ class FormAideRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, FormAide::class);
     }
+/**
+ * @return FormAide[]
+ * 
+ */
+    public function findSearch(SearchData $search):array
+    {
+        $query=$this
+              ->createQueryBuilder('p')
+            ->select('c','p')
+             ->join('p.categories','c');
+        if(!empty($search->q)){
+            $query=$query
+                ->andWhere('p.textpub LIKE :q')
+                ->setParameter('q',"%{$search->q}%");
+        }
+        if(!empty($search->categories)){
+            $query=$query
+                ->andWhere('c.id IN (:categories)')
+                ->setParameter('categories',$search->categories);
+        }
+
+
+              return $query->getQuery()->getResult();
+    }
+
+
 
     // /**
     //  * @return FormAide[] Returns an array of FormAide objects

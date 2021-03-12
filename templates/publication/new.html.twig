@@ -4,10 +4,11 @@
 {% block section %}
 <section class="mypage"></section>
 <div class="stmeformlpub">
-    <h1>Create new Publication</h1>
+<a href="{{ path('publication_index') }}"><i class="fas fa-arrow-left"></i> Retour</a>
+    <h1>Creer une publication</h1>
 
     {{ include('publication/_form.html.twig') }}
 
-    <a href="{{ path('publication_index') }}">back to list</a>
+    
     </div>
 {% endblock %}

@@ -1,5 +1,7 @@
 
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+ 
+      {{ form_row(form.publication_text,{'attr':{'class':'form-control space' },'label':'Publication'}) }} 
+      
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

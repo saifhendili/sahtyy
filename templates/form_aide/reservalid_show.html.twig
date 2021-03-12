@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservaide{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Reservaide</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservaide.id }}</td>
+            </tr>
+            <tr>
+                <th>IdPatient</th>
+                <td>{{ reservaide.idPatient }}</td>
+            </tr>
+            <tr>
+                <th>IdAide</th>
+                <td>{{ reservaide.idAide }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservaide_index') }}">back to list</a>
+
+    <a href="{{ path('reservaide_edit', {'id': reservaide.id}) }}">edit</a>
+
+    {{ include('form_aide/_delete_formreservalid.html.twig') }}
+{% endblock %}
