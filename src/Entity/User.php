@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -64,14 +62,19 @@ class User implements UserInterface
     private $speciality;
 
     /**
-     * @ORM\OneToMany(targetEntity=PostLike::class, mappedBy="user")
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $likes;
+    private $reset_token;
 
-    public function __construct()
-    {
-        $this->likes = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $IsConfirmed;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true )
+     */
+    private $IsActivated;
 
     public function getId(): ?int
     {
@@ -214,32 +217,38 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|PostLike[]
-     */
-    public function getLikes(): Collection
+    public function getResetToken(): ?string
     {
-        return $this->likes;
+        return $this->reset_token;
     }
 
-    public function addLike(PostLike $like): self
+    public function setResetToken(?string $reset_token): self
     {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setUser($this);
-        }
+        $this->reset_token = $reset_token;
 
         return $this;
     }
 
-    public function removeLike(PostLike $like): self
+    public function getIsConfirmed(): ?bool
     {
-        if ($this->likes->removeElement($like)) {
-            // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
-            }
-        }
+        return $this->IsConfirmed;
+    }
+
+    public function setIsConfirmed(bool $IsConfirmed): self
+    {
+        $this->IsConfirmed = $IsConfirmed;
+
+        return $this;
+    }
+
+    public function getIsActivated(): ?bool
+    {
+        return $this->IsActivated;
+    }
+
+    public function setIsActivated(bool $IsActivated): self
+    {
+        $this->IsActivated = $IsActivated;
 
         return $this;
     }

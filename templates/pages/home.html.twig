@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block section %}
+<section class="mypage">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+        
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+		{% block stylesheets %}
+		
+             <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+			
+		{% endblock %}
+
+		
+	</head>
+	<body>
+    {% block javascripts %}
+			<script src="{{asset('js/modernizr.js')}}"></script>
+            <script src="//code.jquery.com/jquery.js"></script>
+             <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+		{% endblock %}
+     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+    welcome ! 
+    <a href="{{ path('vaccin_index') }}"> voir la liste des vaccins</a>
+    </body>
+</html>
+</section>
+{% endblock %}

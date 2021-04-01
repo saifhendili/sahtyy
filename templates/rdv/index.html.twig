@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rdv index
+{% endblock %}
+
+{% block section %}
+
+
+	<section class="mypage"></section>
+
+	<form action="{{path('rechercher')}}" method="post" style="width=250px; margin:100px;">
+		<strong>
+			Choisir Votre Ville
+		</strong>
+		<select name="rech" id="rech" class="form-control">
+		<option value="Ariana">Ariana</option>
+		<option value="Béja">Béja</option>
+		<option value="Ben Arous">Ben Arous</option>
+		<option value="Bizerte">Bizerte</option>
+		<option value="Gabès">Gabès</option>
+		<option value="Gafsa">Gafsa</option>
+		<option value="Jendouba">Jendouba</option>
+		<option value="Kairouan">Kairouan</option>
+		<option value="Kasserine">Kasserine</option>
+		<option value="Kébili">Kébili</option>
+		<option value="Kef">Kef</option>
+		<option value="Mahdia">Mahdia</option>
+		<option value="Manouba">Manouba</option>
+		<option value="Médenine">Médenine</option>
+		<option value="Monastir">Monastir</option>
+		<option value="Sfax">Sfax</option>
+		<option value="Sidi Bouzid">Sidi Bouzid</option>
+		<option value="Siliana">Siliana</option>
+		<option value="Sousse">Sousse</option>
+		<option value="Tataouine">Tataouine</option>
+		<option value="Tozeur">Tozeur</option>
+		<option value="Tunis">Tunis</option>
+		<option value="Zaghouan">Zaghouan</option>
+
+		
+
+
+</select>
+		<input type="submit" value="chercher" class="btn btn-primary">
+	</form>
+
+
+	{# <h1>Rdv index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Date</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rdv in rdvs %}
+				<tr>
+					<td>{{ rdv.id }}</td>
+					<td>{{ rdv.nom }}</td>
+					<td>{{ rdv.Date ? rdv.Date|date('Y-m-d') : '' }}</td>
+					<td>
+						<a href="{{ path('rdv_show', {'id': rdv.id}) }}">show</a>
+						<a href="{{ path('rdv_edit', {'id': rdv.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table> #}
+
+
+{% endblock %}

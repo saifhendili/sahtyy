@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+{% block section %}
+
+	<section class="mypage"></section>
+
+
+	<section class="articles">
+		{% for medecin in medecins %}
+		{% if medecin.roles[0] == "Medecin" %}
+			<div class="container">
+				<div class="" grid>
+			
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<p class="card-text">
+								<h2>{{ medecin.nom }}</h2>
+						
+								<a href="{{path('rdv_new',{'id':medecin.id})}}" name="rdvv" class="btn btn-primary">reserver</a> <br><br>Nom:
+							</p>
+							{{ medecin.prenom}}</p>
+							{# Contact:<p>{{ medecin.Num }}</p> #}
+
+							Spécialité:
+							<p>{{ medecin.speciality }}</p>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<article style="margin:20px;">
+			<div class="content"></div>
+
+		</article>
+	{% else %}
+		n'est pas disponible
+		{% endif %}
+	{% endfor %}
+</section>{% endblock %}

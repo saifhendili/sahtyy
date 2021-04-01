@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle catégories{% endblock %}
+
+{% block section %}
+    <section class="mypage"></section>
+    <h1>Créer une nouvelle catégories</h1>
+
+
+    {{ form_row(form.Name) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+
+    <a href="">back to list</a>
+{% endblock %}
+

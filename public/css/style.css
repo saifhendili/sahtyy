@@ -32,6 +32,9 @@
     margin-left: 73%;
     margin-top: -6%;
 }
+.fixedimagepan{
+    width: 90px;
+}
 .myPublication{
     display: flex;
     flex-direction: row;

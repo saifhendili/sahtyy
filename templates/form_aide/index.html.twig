@@ -34,12 +34,12 @@
     {# <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a> #}
   
-                  
+                  <div class="fb-share-button" data-href="http://127.0.0.1:8000/form/aide/{{form_aide.id}}/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fform%2Faide%2F10%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                 {% if form_aide.getIdUser() == app.user.id  %}
                     <a href="{{ path('form_aide_edit', {'id': form_aide.id}) }}" class="btn btn-primary">edit</a>
                     {{ include('form_aide/_delete_form.html.twig') }}
                     {% else %}
-                     <a href="{{ path('reservaide_new', {'id': form_aide.id}) }}"class="btn btn-primary">reserver</a>
+                     <a href="{{ path('reservaide_new', {'id': form_aide.id},{'ville': form_aide.ville}) }}"class="btn btn-primary">reserver</a>
                 {% endif %}
                 </div>
         </div>

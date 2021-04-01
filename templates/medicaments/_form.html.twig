@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_row(form.nom,{'attr':{'class':'form-control space' },'label':'Nom'}) }} 
+{{ form_row(form.description,{'attr':{'class':'form-control space' },'label':'Description'}) }} 
+{{ form_row(form.img,{'attr':{'class':'form-control space' },'label':'Image'}) }} 
+{{ form_row(form.prix,{'attr':{'class':'form-control space' },'label':'Prix'}) }} 
+{{ form_row(form.quantity,{'attr':{'class':'form-control space' },'label':'Quantity'}) }} 
+{{ form_row(form.id_pharmacie,{'attr':{'class':'form-control space' },'label':'Id Pharmacie'}) }} 
+
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

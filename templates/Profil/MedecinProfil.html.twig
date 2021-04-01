@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}User Profil{% endblock %}
+
+
+
+{% block section %}
+    <head> <link rel="stylesheet" href="{{asset('css/style.css')}}"></head>
+    <body>
+<section class="mypage"></section>
+<center><div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-3">
+        <div class="d-flex align-items-center">
+            <div class="image"> <img src="https://image.freepik.com/vecteurs-libre/profil-avatar-homme-icone-ronde_24640-14044.jpg" class="rounded" width="155"> </div>
+            <div class="ml-3 w-100">
+                <h3 class="mb-0 mt-0"> Nom : {{ app.user.nom }}</h3> <h3> Prénom : {{ app.user.prenom }}</h3>
+                <h3 class="mb-0 mt-0"> Adresse : {{ app.user.adress }}</h3>
+                <h3 class="mb-0 mt-0"> Type : {{ app.user.type }}</h3>
+
+                <a href="">modifier le mot de passe </a>
+
+         <a href="{{ path('reservaide_index')}}">  <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-sm btn-outline-primary w-100">My Reservation</button> </div></a>
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+
+    </body>
+{% endblock %}

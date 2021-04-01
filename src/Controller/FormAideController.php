@@ -42,7 +42,7 @@ class FormAideController extends AbstractController
         $form = $this->createForm(FormAideType::class, $formAide);
         $form->handleRequest($request);
         $user = $this->getUser()->getId();
-    
+     
      
      
         if ($form->isSubmitted() && $form->isValid()) {

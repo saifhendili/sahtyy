@@ -24,18 +24,20 @@ class VaccinController extends AbstractController
             'vaccins' => $vaccinRepository->findAll(),
         ]);
     }
+  
+
 
     /**
-     * @Route("/new", name="vaccin_new", methods={"GET","POST"})
+     * @Route("/newe", name="vaccin_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $vaccin = new Vaccin();
         $form = $this->createForm(VaccinType::class, $vaccin);
         $form->handleRequest($request);
-
+        $user = $this->getUser()->getId();
         if ($form->isSubmitted() && $form->isValid()) {
-           
+           $vaccin->setIdPharmacie($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($vaccin);
             $entityManager->flush();
@@ -84,12 +86,28 @@ class VaccinController extends AbstractController
      */
     public function delete(Request $request, Vaccin $vaccin): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$vaccin->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $vaccin->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($vaccin);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('vaccin_index');
+    }
+    /**
+     * @Route("/rechee", name="rechercheeer")
+     */
+    public function rechercher(Request $request)
+
+    {
+        $x = $request->request->get('recheee');
+
+        $med = $this->getDoctrine()->getRepository(Vaccin::class)->findBy([
+            'nom' => $x,
+        ]);
+
+        return $this->render('affichageee.html.twig', [
+            'vaccins' => $med
+        ]);
     }
 }

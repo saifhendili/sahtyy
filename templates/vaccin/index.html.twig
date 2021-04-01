@@ -1,39 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vaccin index{% endblock %}
+{% block title %}Vaccin 
+{% endblock %}
 
 {% block section %}
-<section class="mypage"></section>
-    <h1>Vaccin index</h1>
+	<section class="mypage"></section>
+	<section class="mypage"></section>
+	<form action="{{path('rechercheeer')}}" method="post" style="width=250px; margin:100px;">
+		<strong>
+			chercher
+		</strong>
+		<input type="text" placeholder="Rechercher.." name="recheee" id="rech" class="form-control">
 
-    <table class="table">
-        <thead>
-            <tr>
-              
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Quantity</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for vaccin in vaccins %}
-            <tr>
-                <td>{{ vaccin.description }}</td>
-                <td>{{ vaccin.prix }}</td>
-                <td>{{ vaccin.quantity }}</td>
-                <td>
-                    <a href="{{ path('vaccin_show', {'id': vaccin.id}) }}">show</a>
-                    <a href="{{ path('vaccin_edit', {'id': vaccin.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<input type="submit" value="chercher" class="btn btn-primary">
+	</form>
+	  <div class="head-mybody"> 
+ <h1>Vaccin</h1>
+    {% if app.user %}
 
-    <a href="{{ path('vaccin_new') }}">Create new</a>
+	<a class="btn btn-primary"href="{{ path('vaccin_new') }}"><i class="fas fa-plus"></i> Ajouter </a>
+	<a class="btn btn-primary"href="{{ path('conseils') }}"><i class="fas fa-plus"></i> Conseils </a>
+    {% endif %}
+	
+</div>
+    <section class="myPublication">
+
+
+
+
+			{% for vaccin in vaccins %}
+
+				<div class="card mycardpublication" style="width: 18rem;">
+				  <img class="card-img-top" src="{{ vaccin.img }}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">{{ vaccin.nom }}</h5>
+						<p class="card-text">{{ vaccin.prix }}dt</p>
+						<p class="card-text">{{ vaccin.quantity}}</p>
+
+
+						<a href="{{ path('cart_adde', {'id': vaccin.id}) }}" class="btn btn-primary">Reserver</a>
+						<a href="{{ path('vaccin_show', {'id': vaccin.id}) }}" class="btn btn-primary">show</a>
+
+
+						<a href="{{ path('vaccin_edit', {'id': vaccin.id}) }}">edit</a>
+
+
+					</div>
+				</div>
+
+		
+			{% endfor %}
+		
+</section>
+
+
+
 {% endblock %}

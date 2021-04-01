@@ -1,49 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Medicaments index{% endblock %}
+{% block title %}Medicaments index {% endblock %}
 
 {% block section %}
-<section class="mypage"></section>
-    <h1>Medicaments index</h1>
-    {% if app.user %}
-    <a href="{{ path('medicaments_new') }}">Create new</a>
-    {% endif %}
-    <section class="myPublication">
+	
+		<section class="mypage"></section>
+	<section class="mypage"></section>
+	<form action="{{path('rechercheer')}}" method="post" style="width=250px; margin:100px;">
+		<strong>
+			chercher
+		</strong>
+		<input type="text" placeholder="Rechercher.." name="reche" id="rech" class="form-control">
+
+		<input type="submit" value="chercher" class="btn btn-primary">
+	</form>
+
+    <div class="head-mybody"> 
+	<h1 style="color:#74BEF0">Les Medicaments</h1>
 
 
+	{% if app.user %}
+	<a class="btn btn-primary"href="{{ path('medicaments_new') }}"><i class="fas fa-plus"></i> Ajouter </a>
+	{% endif %}
+
+	 </div>
+
+	<section class="myPublication">
 
 
-    {% for medicament in medicaments %}
-        <div class="card mycardpublication" style="width: 18rem;">
-            <img class="card-img-top" src="{{ medicament.img }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ medicament.nom }}</h5>
-                <p class="card-text">{{ medicament.prix }}dt</p>
+		{% for medicament in medicaments %}
+			<div class="card mycardpublication" style="width: 18rem;">
+				<img class="card-img-top" src="{{ medicament.img }}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">{{ medicament.nom }}</h5>
+					<p class="card-text">{{ medicament.prix }}dt</p>
+					<a href="{{ path('cart_add', {'id': medicament.id}) }}" class="btn btn-primary">Reserver</a>
+					<a href="{{ path('medicaments_show', {'id': medicament.id}) }}" class="btn btn-primary">show</a>
+	<a href="{{ path('medicaments_edit',{'id': medicament.id})}}">edit</a>
 
-               <a href="{{ path('reservation_med_new', {'id': medicament.id}) }}" class="btn btn-primary">Reserver</a>
-                <a href="{{ path('reservation_med_new', {'id': medicament.id}) }}"class="btn btn-primary">show</a>
-                  
-                {% if medicament.getIdPharmacie() == app.user.id  %}
-                    <a href="{{ path('publication_edit', {'id': publication.id}) }}" class="btn btn-primary">edit</a>
-                    {{ include('publication/_delete_form.html.twig') }}
-                {% endif %}
-            </div>
-        </div>
+					
+				</div>
+			</div>
 
+		
+            
+		{% endfor %}
+		 
+                
 
-
-
-
-        <a href="{{ path('medicaments_edit', {'id': medicament.id}) }}">edit</a>
-
-    {% endfor %}
-    </section>
-
-
-
-
-
-
+	</section>
+	<a href="{{ path('about') }}">Guide utilisation médicaments</a>
 
 
 {% endblock %}

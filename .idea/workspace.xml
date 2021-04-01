@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="851a3be2-e2b4-410b-b3e6-4df9f0d80dcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Data/SearchData.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/SearchForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sahty.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sahty.iml" afterDir="false" />
@@ -29,36 +27,18 @@
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210304205951.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210304213217.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210304215033.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210305012324.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210305024959.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210305040514.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210305105036.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210305130242.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FormAideController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormAideController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservaideController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservaideController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/FormAide.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/FormAide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Publication.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Publication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reservaide.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservaide.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FormAideType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormAideType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FormAideRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FormAideRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PublicationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PublicationRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/form_aide/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/form_aide/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/form_aide/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/form_aide/_formreservalid.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/_formreservalid.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/form_aide/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/form_aide/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_aide/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publication/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publication/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publication/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publication/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publication/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publication/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publication/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publication/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publication/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publication/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +159,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pJgXVdJNR1oDqtz8rDf6F4llNN" />
@@ -190,7 +172,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../zaynebFinal/sahtyy-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -226,6 +208,9 @@
       <workItem from="1615482921755" duration="776000" />
       <workItem from="1615483746010" duration="2251000" />
       <workItem from="1615502872135" duration="339000" />
+      <workItem from="1616882936327" duration="2648000" />
+      <workItem from="1616954791989" duration="1298000" />
+      <workItem from="1617058053443" duration="290000" />
     </task>
     <servers />
   </component>
@@ -243,15 +228,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="528" y="135" key="NewPhpClassDialog" timestamp="1615476976622">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="528" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1615476976622" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1614908375489">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614908375489" />
   </component>
 </project>

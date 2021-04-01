@@ -13,7 +13,7 @@ class VaccinType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('id_pharmacie')
+            ->add('img')
             ->add('description')
             ->add('prix')
             ->add('quantity')

@@ -38,10 +38,8 @@ class HomeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($home);
             $entityManager->flush();
-
             return $this->redirectToRoute('home_index');
         }
-
         return $this->render('home/new.html.twig', [
             'home' => $home,
             'form' => $form->createView(),

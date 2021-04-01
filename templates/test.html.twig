@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+
+{% block section %}
+	<section class="mypage"></section>
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+
+
+		
+        
+        <h2><font color="purpule"> Panier</font></h2>
+        
+
+	{% if items | length > 0 %}
+		<table class="table">
+			 <thead>  
+					<tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+			
+			</thead>
+			<tbody>
+				{% for item in items %}
+				</thead>
+                        <tbody>
+                        <tr>
+						<td><img src="{{ item.medicament.img}}" class="fixedimagepan"/> </td>
+						<td>{{ item.medicament.nom}}</td>
+                        <td>In stock</td>
+						<td><p class="form-control" />{{ item.quantity}}</p></td>
+						<td class="text-right">{{ item.medicament.prix *item.quantity}} dt</td>
+
+         
+       
+					   <td class="text-right"><a href="{{ path('cart_remove', {'id': item.medicament.id}) }}" class="btn btn-danger">
+								<i class="fa fa-trash"></i>
+                                
+
+							</a></td>
+							
+					</tr>
+
+				{% endfor %}
+		   <tr>
+					<td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Sub-Total</td>
+                            <td class="text-right">{{ total }} dt</td>
+                        </tr>
+                        <tr>
+						<td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tax (12%)</td>
+                            <td class="text-right">{{(total * 12)/ 100 }}</td>
+                        </tr>
+                        <tr>
+						<td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong>{{ total * 1.12 }}</strong></td>
+                        </tr>
+			</tbody>
+		 </table>
+            </div>
+        </div>
+		<div class="col mb-2">
+            <div class="row">
+               
+			  <div class="col-sm-12 col-md-6 text-right">
+			 <a href="{{path  ('reservation_med_index')}}" class="btn btn-primary">Confirmer</a>
+                </div>
+                
+            </div>
+        </div>
+
+
+	{% else %}
+
+
+		<p> Vous n'avez réserver aucun médicaments ! </p>
+
+	{% endif %}
+
+ <div class="col-sm-12 col-md-6 text-right">
+                    
+			 <a href="{{path ('medicaments_index')}}" class="btn btn-primary">Retour a la liste des médicaments</a>
+			 </div>
+{% endblock %}

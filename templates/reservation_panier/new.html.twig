@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ReservationPanier{% endblock %}
+
+{% block section %}
+	<section class="mypage"></section>
+    <h1>Create new ReservationPanier</h1>
+
+    {{ include('reservation_panier/_form.html.twig') }}
+
+    <a href="{{ path('reservation_panier_index') }}">back to list</a>
+{% endblock %}

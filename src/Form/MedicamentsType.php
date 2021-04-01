@@ -17,7 +17,7 @@ class MedicamentsType extends AbstractType
             ->add('prix')
             ->add('quantity')
             ->add('img')
-            ->add('id_pharmacie')
+           
         ;
     }
 

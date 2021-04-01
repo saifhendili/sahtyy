@@ -3,38 +3,13 @@
 {% block title %}ReservationMed index{% endblock %}
 
 {% block section %}
+
 <section class="mypage"></section>
-    <h1>ReservationMed index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>IdMed</th>
-                <th>IdPhar</th>
-                <th>IdPatient</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation_med in reservation_meds %}
-            <tr>
-                <td>{{ reservation_med.id }}</td>
-                <td>{{ reservation_med.idMed }}</td>
-                <td>{{ reservation_med.idPhar }}</td>
-                <td>{{ reservation_med.idPatient }}</td>
-                <td>
-                    <a href="{{ path('reservation_med_show', {'id': reservation_med.id}) }}">show</a>
-                    <a href="{{ path('reservation_med_edit', {'id': reservation_med.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-
+    <div class="head-mybody"> 
+	<center><h1 style="color:#74BEF0">Votre Réservation a été bien enregistrer</h1><center>
+    </div>
+      <div class="col-sm-12 col-md-6 text-right">
+                    
+			 <a href="{{path ('medicaments_index')}}" class="btn btn-primary">Retour a la liste des médicaments</a>
+			 </div>
 {% endblock %}

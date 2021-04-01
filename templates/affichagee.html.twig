@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+{% block section %}
+
+	<section class="mypage"></section>
+
+<div class="head-mybody"> 
+
+	<section class="articles">
+		{% for medicament in medicaments %}
+			<div class="container">
+				<div class="" grid>
+					<div class="card" style="width: 18rem;">
+						<div class="head-mybody">
+						<center><table class="table">
+	   <tbody>
+					  <tr>
+				      <th>Nom</th>
+				    <td>{{ medicament.nom }}</td>
+					
+			        </tr>
+						
+				<tr>
+				<th>Description</th>
+				<td>{{ medicament.description }}</td>
+			</tr>
+			<th>Prix</th>
+				<td>{{ medicament.prix }}</td>
+			</tr>
+					<tr>
+				<th>Quantity</th>
+				<td>{{ medicament.quantity }}</td>
+			</tr>
+							
+					<tr>
+				<th>Id_pharmacie</th>
+				<td>{{ medicament.idPharmacie }}</td>
+				</tr>
+				<tr>
+				  <div class="col-sm-12 col-md-6 text-right">
+				  <td>	<a href="{{ path('cart_add', {'id': medicament.id}) }}" class="btn btn-primary">Reserver</a></td>
+			 
+                </div>
+			
+			</tr>
+			<div class="col-sm-12 col-md-6 text-right">
+				  <td></a></td>
+			 
+                </div>
+			
+				</tbody>
+	</table></center>
+		</div>
+				</div>
+			</div>
+		</div>
+
+		<article style="margin:20px;">
+			<div class="content"></div>
+
+		</article>
+	{% else %}
+		n'est pas disponible
+	{% endfor %}
+     
+ <div class="col-sm-12 col-md-6 text-right">		
+	<a href="{{ path('medicaments_index') }}" class="btn btn-primary">Retour</a>
+	</div>
+</section>{% endblock %}

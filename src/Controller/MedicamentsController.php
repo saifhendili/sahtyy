@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  * @Route("/medicaments")
  */
@@ -18,10 +19,28 @@ class MedicamentsController extends AbstractController
     /**
      * @Route("/", name="medicaments_index", methods={"GET"})
      */
-    public function index(MedicamentsRepository $medicamentsRepository): Response
+    public function index(MedicamentsRepository $medicamentsRepository):Response
     {
         return $this->render('medicaments/index.html.twig', [
             'medicaments' => $medicamentsRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/reche", name="rechercheer")
+     */
+    public function rechercher(Request $request)
+
+    {
+        
+        
+        $x = $request->request->get('reche');
+
+        $med = $this->getDoctrine()->getRepository(Medicaments::class)->findBy([
+            'nom' => $x,
+        ]);
+
+        return $this->render('affichagee.html.twig', [
+            'medicaments' => $med
         ]);
     }
 
@@ -34,7 +53,9 @@ class MedicamentsController extends AbstractController
         $form = $this->createForm(MedicamentsType::class, $medicament);
         $form->handleRequest($request);
 
+        $user = $this->getUser()->getId();
         if ($form->isSubmitted() && $form->isValid()) {
+           $medicament->setIdPharmacie($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($medicament);
             $entityManager->flush();
@@ -54,7 +75,7 @@ class MedicamentsController extends AbstractController
     public function show(Medicaments $medicament): Response
     {
 
-        
+
         return $this->render('medicaments/show.html.twig', [
             'medicament' => $medicament,
         ]);
@@ -85,7 +106,7 @@ class MedicamentsController extends AbstractController
      */
     public function delete(Request $request, Medicaments $medicament): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$medicament->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $medicament->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($medicament);
             $entityManager->flush();
@@ -93,4 +114,8 @@ class MedicamentsController extends AbstractController
 
         return $this->redirectToRoute('medicaments_index');
     }
-}
+
+    }
+
+
+

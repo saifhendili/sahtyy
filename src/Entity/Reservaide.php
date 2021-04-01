@@ -27,6 +27,16 @@ class Reservaide
      */
     private $idAide;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class Reservaide
     public function setIdAide(string $idAide): self
     {
         $this->idAide = $idAide;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

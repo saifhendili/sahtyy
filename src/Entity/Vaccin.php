@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VaccinRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=VaccinRepository::class)
  */
@@ -42,6 +43,11 @@ class Vaccin
      * @ORM\Column(type="integer")
      */
     private $quantity;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img;
 
     public function getId(): ?int
     {
@@ -104,6 +110,18 @@ class Vaccin
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

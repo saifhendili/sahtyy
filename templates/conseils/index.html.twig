@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+				           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+			<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+			<link rel="stylesheet" href="{{asset('css/style.css')}}">
+			<link href="{{asset('http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300')}}" rel='stylesheet' type='text/css'>
+			<link href="{{asset('http://fonts.googleapis.com/css?family=BenchNine:300,400,700')}}" rel='stylesheet' type='text/css'>
+		{% endblock %}
+
+		{% block javascripts %}
+			<script src="{{asset('js/modernizr.js')}}"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% block header %}
+			<!-- ====================================================
+							header section -->
+			<header class="top-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-5 header-logo">
+							<br>
+							<a href=""><img src="{{ asset('img/logo.png') }}" alt="" class="img-responsive logo"></a>
+
+						</div>
+
+						<div class="col-md-7">
+							<nav class="navbar navbar-default">
+								<div
+									class="container-fluid nav-bar">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+										{% if app.user %}
+											<ul class="nav navbar-nav navbar-right">
+
+												<li>
+													<a class="menu active" href="">home</a>
+												</li>
+												<li>
+													<a class="menu" href="{{path('form_aide_index')}}">Form d'aide</a>
+												</li>
+												<li>
+													<a class="menu" href="{{path('medicaments_index')}}">Reserver Medicament</a>
+												</li>
+												<li>
+													<a class="menu" href="{{path('vaccin_index')}}">Reserver Vaccin</a>
+												</li>
+												<li>
+													<a class="menu" href="/rdv">
+
+														rendez-vous</a>
+												</li>
+												<li>
+													<a href="{{path('app_logout')}}">logout</a>
+												</li>
+											</ul>
+										{% else %}
+											<ul class="nav navbar-nav navbar-right">
+												<li>
+													<a href="{{path('app_login')}}">login</a>
+												</li>
+												<li>
+													<a href="{{path('app_register')}}">register</a>
+
+												</li>
+											</ul>
+
+										{% endif %}
+
+									</div>
+									<!-- /navbar-collapse -->
+								</div>
+								<!-- / .container-fluid -->
+							</nav>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- end of header area -->
+		{% endblock %}
+		{% block section2 %}{% endblock %}
+		{% block section %}
+			<section class="slider" id="home">
+		
+							<!-- Controls -->
+							<a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end of slider section -->
+
+			<section class="about text-center" id="about">
+				<div class="container">
+					<div class="row">
+						<h2>about us</h2>
+						<h4>Cette plateforme innovante permet de présenter des differentes conseils des vaccins </h4>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-about-detail clearfix">
+								<div class="about-img">
+									<img class="img-responsive" src="{{asset('img/bebe1.jpg')}}" alt="">
+								</div>
+								<div class="about-details">
+									<div class="pentagon-text">
+										<h1>M</h1>
+									</div>
+									<h3>Menveo vaccin</h3>
+									<p>Il est recommandé de ne pas administrer Menveo en même temps que d'autres vaccins, en particulier les vaccins vivants, à moins que cela ne soit absolument nécessaire. Les vaccinations simultanées doivent toujours être administrées en des sites d'injection séparés et de préférence dans les deux bras.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-about-detail">
+								<div class="about-img">
+									<img class="img-responsive" src="{{asset('img/vaccin3.jpg')}}" alt="">
+								</div>
+								<div class="about-details">
+									<div class="pentagon-text">
+										<h1>A</h1>
+									</div>
+
+									<h3>AVAXIM vaccin</h3>
+									<p>L’hépatite A est due à un virus qui peut se transmettre par l’eau ou par les aliments souillés par les matières fécales. La vaccination est recommandée pour les sujets jeunes à partir de l’âge de 2 ans pour tous types de séjours dans les pays où la maladie est d’endémicité importante..</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-about-detail">
+								<div class="about-img">
+									<img class="img-responsive" src="{{asset('img/bebe1.jpg')}}" alt="">
+								</div>
+								<div class="about-details">
+									<div class="pentagon-text">
+										<h1>B</h1>
+									</div>
+									<h3>BCG vaccin</h3>
+									<p> Vaccin contre la tuberculose : 1 seule dose le plus
+tôt possible après la naissance. Ne sont plus
+indiquées dans la suite de cette 1ère injection ni la
+pratique de l’IDR à la tuberculine ni le rappel par le
+BCG
+.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end of about section -->
+
+			<section class="service text-center" id="service">
+		
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>
+</section>
+<!-- end of service section -->{% endblock %}{% block footer %}
+<footer class="footer clearfix">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 footer-para">
+				<p>&copy;Mostafizur All right reserved</p>
+			</div>
+			<div class="col-xs-6 text-right">
+				<a href="">
+					<i class="fa fa-facebook"></i>
+				</a>
+				<a href="">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<a href="">
+					<i class="fa fa-skype"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>{% endblock %}{% block js2 %}
+<script src="{{ asset('js/jquery-2.1.1.js')}}"></script>
+<script src="{{ asset('js/smoothscroll.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>{% endblock %}</body></html>
+

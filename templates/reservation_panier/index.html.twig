@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReservationPanier index{% endblock %}
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>ReservationPanier index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userid</th>
+                <th>Username</th>
+                <th>Items</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation_panier in reservation_paniers %}
+            <tr>
+                <td>{{ reservation_panier.id }}</td>
+                <td>{{ reservation_panier.userid }}</td>
+                <td>{{ reservation_panier.username }}</td>
+                {# <td>{{ reservation_panier.items ? reservation_panier.items|join(', ') : '' }}</td> #}
+                <td>{{ reservation_panier.prix }}</td>
+                <td>
+                    <a href="{{ path('reservation_panier_show', {'id': reservation_panier.id}) }}">show</a>
+                    <a href="{{ path('reservation_panier_edit', {'id': reservation_panier.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservation_panier_new') }}">Create new</a>
+{% endblock %}

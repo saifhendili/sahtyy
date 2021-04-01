@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block section %}
+
+	<section class="mypage"></section>
+
+
+	<section class="articles">
+		{% for vaccin in vaccins %}
+			<div class="container">
+				<div class="" grid>
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<p class="card-text">
+								<h2>{{ vaccin.nom }}</h2>
+							</p>
+
+
+							Description:<p>{{ vaccin.description }}</p>
+
+							Prix:<p>{{ vaccin.prix }}</p>
+							Quantité<p>{{ vaccin.quantity }}</p>
+
+
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<article style="margin:20px;">
+			<div class="content"></div>
+
+		</article>
+	{% else %}
+		n'est pas disponible
+	{% endfor %}
+</section>{% endblock %}

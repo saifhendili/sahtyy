@@ -8,9 +8,7 @@
     <h1>Publication</h1>
   
     <a class="btn btn-primary"href="{{ path('publication_new') }}"> <i class="fas fa-plus"></i> Ajouter publication</a>
-  {% for item in publications | %}
-    {{ item.nomUser }}
-{% endfor %}
+ 
     </div>
 <section class="myPublication">
 
@@ -42,7 +40,7 @@
         </div>
 </div>
 <div class="panel-body">
-{{ publication.publicationText |replace({'kalb': '****', 'aa': "**"})}}
+{{ publication.publicationText |replace({'bro': '***', 'tit': "***"})}}
 </div><!-- /panel-body -->
 <div class=" panel-default">
 {# <a href="{{ path('publication_show', {'id': publication.id}) }}" class="card-link">Show</a> #}

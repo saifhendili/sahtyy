@@ -1,0 +1,35 @@
+
+{% block section %}
+<section class="mypage"></section>
+    <h1>Reservaide index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdPatient</th>
+                <th>IdAide</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservaide in reservaides %}
+        {% if reservaide.idPatient == app.user.id %}
+            <tr>
+                <td>{{ reservaide.id }}</td>
+                <td>{{ reservaide.idPatient }}</td>
+                <td>{{ reservaide.idAide }}</td>
+                <td>
+                    <a href="{{ path('reservaide_show', {'id': reservaide.id}) }}">pdf</a>
+                    <a href="{{ path('reservaide_edit', {'id': reservaide.id}) }}">edit</a>
+                </td>
+            </tr>
+        
+            {% endif %}
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('reservaide_new') }}">Create new</a> #}
+{% endblock %}

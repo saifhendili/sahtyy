@@ -5,7 +5,8 @@
      
        {{ form_row(form.textpub,{'attr':{'class':'form-control space' ,'placeholder':'Publication'},'label':'Description'}) }} 
        {{ form_row(form.quantit,{'attr':{'class':'form-control space' ,'value':'1'},'label':'Quantité'}) }} 
-       {{ form_row(form.categories,{'attr':{'class':'form-control space' ,'value':'1'},'label':'Quantité'}) }} 
+       {{ form_row(form.categories,{'attr':{'class':'form-control space' },'label':'Categories'}) }} 
+       {{ form_row(form.ville,{'attr':{'class':'form-control space' },'label':'Ville'}) }} 
 
     <center><button class="btn btn-primary space">{{ button_label|default('Enregistrer') }}</button></center>
 {{ form_end(form) }}

@@ -1,38 +1,34 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Reservaide index{% endblock %}
 
 {% block section %}
-<section class="mypage"></section>
-    <h1>Reservaide index</h1>
 
-    <table class="table">
+ <h1 align="center">Riservation</h1>
+   
+        {% for reservaide in reservaides %}
+        {% if reservaide.idPatient == app.user.id %}
+         <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>IdPatient</th>
                 <th>IdAide</th>
-                <th>actions</th>
+            
             </tr>
         </thead>
         <tbody>
-        {% for reservaide in reservaides %}
             <tr>
                 <td>{{ reservaide.id }}</td>
                 <td>{{ reservaide.idPatient }}</td>
                 <td>{{ reservaide.idAide }}</td>
-                <td>
-                    <a href="{{ path('reservaide_show', {'id': reservaide.id}) }}">show</a>
-                    <a href="{{ path('reservaide_edit', {'id': reservaide.id}) }}">edit</a>
-                </td>
+               <td>
+<img src="{{ reservaide.img }}" alt="Image" />
+             <td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
         </tbody>
     </table>
 
-    {# <a href="{{ path('reservaide_new') }}">Create new</a> #}
-{% endblock %}
+            {% endif %}
+            
+        {% endfor %}
+        
+ 
+ {% endblock %}
