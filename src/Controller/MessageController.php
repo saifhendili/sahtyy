@@ -13,7 +13,7 @@ class MessageController extends AbstractController
 
 {
     /**
-     * @Route("/", name="message")
+     * @Route("/flashy", name="message")
      */
     public function message(FlashyNotifier $flashy): Response
 
